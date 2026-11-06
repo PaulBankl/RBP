@@ -1,7 +1,30 @@
-<h1>Meine Web Application</h1>
 
-<p>Willkommen bei meinem Projekt!</p>
+<header>
+  <h1>Meine App</h1>
+</header>
 
-<button (click)="sayHello()">
-  Klick mich
-</button>
+<nav>
+  <a routerLink="/uebersicht" routerLinkActive="active">
+    Übersicht
+  </a>
+
+  <a routerLink="/fotos" routerLinkActive="active">
+    Fotos
+  </a>
+
+  <a routerLink="/umfragen" routerLinkActive="active">
+    Umfragen
+  </a>
+
+  <a routerLink="/gaesteliste" routerLinkActive="active">
+    Gästeliste
+  </a>
+
+  <a routerLink="/einstellungen" routerLinkActive="active">
+    Einstellungen
+  </a>
+</nav>
+
+<main>
+  <router-outlet />
+</main>
