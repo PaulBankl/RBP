@@ -1,39 +1,74 @@
 import { Routes } from '@angular/router';
 
-import { UebersichtComponent } from './pages/uebersicht/uebersicht.component';
-import { FotosComponent } from './pages/fotos/fotos.component';
-import { UmfragenComponent } from './pages/umfragen/umfragen.component';
-import { GaestelisteComponent } from './pages/gaesteliste/gaesteliste.component';
-import { EinstellungenComponent } from './pages/einstellungen/einstellungen.component';
+// Layouts
+import { AuthLayout } from './layouts/auth-layout/auth-layout';
+import { MainLayout } from './layouts/main-layout/main-layout';
+
+// Auth
+import { LoginComponent } from './pages/login/login';
+import { RegisterComponent } from './pages/register/register';
+
+// Pages
+import { OverviewComponent } from './pages/overview/overview';
+import { PhotosComponent } from './pages/photos/photos';
+import { PollsComponent } from './pages/polls/polls';
+import { GuestListComponent } from './pages/guest-list/guest-list';
+import { SettingsComponent } from './pages/settings/settings';
 
 export const routes: Routes = [
+
   {
     path: '',
-    redirectTo: 'uebersicht',
+    redirectTo: 'overview',
     pathMatch: 'full'
   },
+
+  // Auth routes
   {
-    path: 'uebersicht',
-    component: UebersichtComponent
+    path: '',
+    component: AuthLayout,
+    children: [
+      {
+        path: 'login',
+        component: LoginComponent
+      },
+      {
+        path: 'register',
+        component: RegisterComponent
+      }
+    ]
   },
+
+  // User routes
   {
-    path: 'fotos',
-    component: FotosComponent
+    path: '',
+    component: MainLayout,
+    children: [
+      {
+        path: 'overview',
+        component: OverviewComponent
+      },
+      {
+        path: 'photos',
+        component: PhotosComponent
+      },
+      {
+        path: 'polls',
+        component: PollsComponent
+      },
+      {
+        path: 'guest-list',
+        component: GuestListComponent
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent
+      }
+    ]
   },
-  {
-    path: 'umfragen',
-    component: UmfragenComponent
-  },
-  {
-    path: 'gaesteliste',
-    component: GaestelisteComponent
-  },
-  {
-    path: 'einstellungen',
-    component: EinstellungenComponent
-  },
+
   {
     path: '**',
-    redirectTo: 'uebersicht'
+    redirectTo: 'overview'
   }
-];
+]
